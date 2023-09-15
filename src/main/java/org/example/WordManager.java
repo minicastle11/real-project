@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
@@ -26,6 +29,7 @@ public class WordManager {
         wordCRUD = new WordCRUD(sc);
     }
     public void start(){
+        wordCRUD.loadFile();
         while(true) {
             int menu = selectMenu();
             if(menu == 0)break;
@@ -35,13 +39,31 @@ public class WordManager {
             else if(menu == 1){
                 wordCRUD.listAll();
             }
+            else if(menu == 2){
+                wordCRUD.listAll();
+            }
+            else if(menu == 3){
+                wordCRUD.listAll();
+            }
+            else if(menu == 4){
+                wordCRUD.listAll();
+            }
             else if(menu == 5)
             {
                 wordCRUD.update(new Object());
             }
             else if(menu ==6){
-
+                wordCRUD.delete(new Object());
             }
+            else if(menu ==7){
+                wordCRUD.saveFile();
+            }
+
         }
     }
+
 }
+/*Connection con = null;
+try{
+Class.forName
+ */

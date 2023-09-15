@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 public class WordCRUD implements ICRUD {
     ArrayList<Word> list;
     Scanner sc;
+    final String fileN = "danajang.txt";
     WordCRUD(Scanner sc){
          list = new ArrayList<>();
         this.sc =sc;
@@ -30,7 +32,6 @@ public class WordCRUD implements ICRUD {
     @Override
     public int update(Object o) {
         System.out.println("수정하고 싶은 단어를 알려주세요 : ");
-
         String fri = sc.next();
         ArrayList<Integer> find = this.listAll(fri);
         System.out.println("몇번째 데이터를 수정하고 싶으싶니까?");
@@ -54,7 +55,32 @@ public class WordCRUD implements ICRUD {
 
     @Override
     public int delete(Object o) {
+        System.out.println("삭제하고 싶은 단어를 알려주세요 : ");
+        String two = sc.next();
+        ArrayList<Integer> del = this.listAll(two);
+        System.out.println("몇번째 데이터를 삭제하고 싶으싶니까?");
+        int a = sc.nextInt();
+        int an = deleteList(list.get(del.get(a-1)));
+        if (an == 1){
+            list.remove(list.get(del.get(a-1)));
+        }else{
+            System.out.println("취소되었습니다.");
+        }
         return 0;
+    }
+
+    private int deleteList(Word word) {
+        if(word == null){
+            System.out.println("단어가 없습니다.");
+            return 0;
+        }
+        System.out.println("정말로 삭제 하시겠습니까?? ( Y / N )");
+        String check = sc.next();
+        if(check.equalsIgnoreCase("Y")){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
     @Override
@@ -85,6 +111,36 @@ public class WordCRUD implements ICRUD {
         }
         System.out.println("------------------------------- \n");
         return find;
+    }
+
+
+
+    public void loadFile(){
+        try{
+            BufferedReader inp = new BufferedReader(new FileReader(fileN));
+            String line;
+            int count = 0;
+            while(true) {
+                line = inp.readLine();
+                if(line == null)break;
+                String data[] = line.split("\\|");
+                int level = Integer.parseInt(data[0]);
+                String word = data[1];
+                String meaning = data[2];
+                list.add(new Word(0,level,word,meaning));
+                count ++;
+            }
+            inp.close();
+            System.out.println("->"+count+"개 입력 완료");
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public void saveFile(){
+
     }
 
 }

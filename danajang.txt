@@ -1,0 +1,24 @@
+1|regarding|~에 관하여
+1|current|현재의
+1|replace|교체하다
+3|master’s degree|석사 학위
+1|curriculum|교육 과정
+2|remainder|나머지(보통 the와 함께 사용)
+1|semester|학기
+1|assignment|과제
+3|administration office|행정실
+2|regretful|유감으로 여기는
+2|resignation|사직, 사임
+1|chief research engineer|수석 연구 엔지니어
+1|date|(문서 따위에) 날짜를 적다
+1|approve|승인하다
+3|board of directors|이사회
+3|human resources|인사부
+1|emotion|감격, 감동
+1|babysitter|베이비시터, 아기 봐주는 사람
+2|admire|감탄하며 바라보다
+1|sparkling|반짝이는
+2|incredible|(믿기 어려울 만큼) 대단한
+2|barely|거의 ~ 아니게
+3|sleep a wink|한잠 자다
+2|look forward to|~을 고대하다
