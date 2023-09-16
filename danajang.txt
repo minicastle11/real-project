@@ -1,6 +1,5 @@
 1|regarding|~에 관하여
 1|current|현재의
-1|replace|교체하다
 3|master’s degree|석사 학위
 1|curriculum|교육 과정
 2|remainder|나머지(보통 the와 함께 사용)

@@ -40,10 +40,10 @@ public class WordManager {
                 wordCRUD.listAll();
             }
             else if(menu == 2){
-                wordCRUD.listAll();
+                wordCRUD.searchLevel();
             }
             else if(menu == 3){
-                wordCRUD.listAll();
+                wordCRUD.searchWord();
             }
             else if(menu == 4){
                 wordCRUD.listAll();

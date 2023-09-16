@@ -54,5 +54,8 @@ public class Word {
                 String.format("%13s",word)+ "     " + meaning;
         return str;
     }
+    public String toFileString(){
+        return this.level+"|"+this.word+"|"+this.meaning;
+    }
 
 }

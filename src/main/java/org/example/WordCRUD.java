@@ -18,10 +18,12 @@ public class WordCRUD implements ICRUD {
     public Object add() {
         System.out.println("=>난이도(1,2,3) & 새 단어 입력 : ");
         int level = sc.nextInt();
-        String word = sc.nextLine();
+        String asd = sc.nextLine();
+        /*String asf = sc.next();*/
+        String word[] = asd.split("\\s");
         System.out.println("뜻 입력 : ");
         String meaning = sc.nextLine();
-        return new Word(0, level, word, meaning);
+        return new Word(0, level, word[1], meaning);
     }
     public void addWord(){
         Word one = (Word)add();
@@ -114,7 +116,6 @@ public class WordCRUD implements ICRUD {
     }
 
 
-
     public void loadFile(){
         try{
             BufferedReader inp = new BufferedReader(new FileReader(fileN));
@@ -140,7 +141,58 @@ public class WordCRUD implements ICRUD {
 
     }
     public void saveFile(){
+        try {
+            PrintWriter wri = new PrintWriter(new FileWriter("danajang.txt"));
+            for(Word one:list){
+                wri.write(one.toFileString()+"\n");
+            }
+            wri.close();
+            System.out.println("-> 데이터 저장 완료");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void listLevel(int level){
+        int j=0;
+        System.out.println("\n------------------------------- ");
+        System.out.println("num level       word      meaning");
+        for(int i = 0 ; i < list.size(); i ++){
+            int ilevel =list.get(i).getLevel();
+            if(ilevel!=level)continue;
+            System.out.print(" "+(j+1)+"   ");
+            System.out.println(list.get(i).toString());
+            j++;
+        }
+        System.out.println("------------------------------- \n");
+    }
+    public void listFind(String fin){
+        int j = 0;
+        System.out.println("\n------------------------------- ");
+        System.out.println("num level       word      meaning");
+        for(int i = 0 ; i < list.size(); i ++){
+            String word =list.get(i).getWord();
+            if(!word.contains(fin))continue;
+            System.out.print(" "+(j+1)+"   ");
+            System.out.println(list.get(i).toString());
+            j++;
+        }
+        System.out.println("------------------------------- \n");
+    }
+
+
+    public void searchLevel(){
+        System.out.println("어떤 수준의 단어를 보고 싶습니까? (1~3)");
+        int level = sc.nextInt();
+        listLevel(level);
 
     }
+    public void searchWord(){
+        System.out.println("찾고자 하는 단어는?");
+        String fin = sc.next();
+        listFind(fin);
+        
+    }
+
 
 }
